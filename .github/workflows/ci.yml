@@ -1,0 +1,33 @@
+name: ci
+
+# Pull requests run no hosted CI (pwa-kit STANDARD.md "CI/CD"): the author runs
+# `python3 scripts/validate-agents.py` and `cr agents list` before marking a PR ready.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  leak-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: huishouden/pwa-kit/actions/leak-scan@v0
+      - uses: huishouden/pwa-kit/actions/license-check@v0 # PolyForm Shield 1.0.0 (pwa-kit STANDARD.md "License")
+
+  # A model_tier the runtime can't resolve aborts every review at planning time, not one agent.
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: pip install --quiet pyyaml
+      - run: python3 scripts/validate-agents.py

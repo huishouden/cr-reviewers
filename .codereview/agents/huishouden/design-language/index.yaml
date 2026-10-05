@@ -1,0 +1,15 @@
+name: design-language
+description: Holds UI changes in Huishouden apps to the suite's design language (pwa-kit DESIGN.md) — names, the app bar frame, light and dark colour roles, type, shapes, kit components, completion, copy tone, logos — the judgment calls the mechanical pwa-design-check cannot make.
+model_tier: medium
+effort: medium
+file_globs:
+  - "**/*.tsx"
+  - "**/*.jsx"
+  - "**/*.ts"
+  - "**/*.css"
+  - "**/*.html"
+  - "**/*.svg"
+  - "**/vite.config.*"
+applies_when:
+  - The repository is a Huishouden app or the kit (in the huishouden GitHub org, depends on @huishouden/pwa-kit, or uses the hh- theme tokens) and the change touches rendered UI, copy, app names, icons or the PWA manifest.
+needs_full_file_content: true

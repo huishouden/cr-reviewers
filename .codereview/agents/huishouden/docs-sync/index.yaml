@@ -1,0 +1,9 @@
+name: docs-sync
+description: Checks that the docs describing a Huishouden change moved with it — the repo README (features, screenshots, setup, privacy), the release entry, the kit's STANDARD.md, DESIGN.md and docs/, the portal's apps.json and privacy page, the rules README, the org profile, and the suite's skills and CLI docs — and names the exact doc and sentence that is now stale.
+model_tier: medium
+effort: medium
+file_globs:
+  - "**/*"
+applies_when:
+  - The repository is in the huishouden GitHub org or depends on @huishouden/pwa-kit, and the change alters behaviour a reader relies on — user-visible features or text, data collected or shared, roles, an app's name or purpose, kit exports or conventions, setup, CI, staging, release or review process — rather than only tests or an internal refactor.
+needs_full_file_content: true

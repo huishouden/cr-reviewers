@@ -1,0 +1,11 @@
+name: i18n
+description: Checks that Huishouden UI text ships in English, Spanish and Dutch together — natural translations that use the suite's glossary, whole-sentence ICU messages, kit formatters for dates, numbers and money, and stored text built for every language — the judgment pwa-i18n-check cannot make.
+model_tier: medium
+effort: medium
+file_globs:
+  - "**/*.tsx"
+  - "**/*.ts"
+  - "**/locales/**"
+applies_when:
+  - The repository is a Huishouden app, Worker or the kit (in the huishouden GitHub org or depends on @huishouden/pwa-kit) and the change adds or edits visible text, aria-labels, toasts, notification or reminder text, locale catalogues, or formats dates, times, numbers, money or distances.
+needs_full_file_content: true
