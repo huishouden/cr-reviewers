@@ -32,7 +32,8 @@ cr agents list --profile <profile>        # the huishouden:* agents, from this s
 cr review <PR URL> --profile <profile> --dry-run
 ```
 
-Pull the clone to pick up changes; `cr` reads the prompts at review time. When two sources define
+In a Huishouden repo, `hh dev review` (huishouden/cli) runs the same review on a draft PR with this
+source. Pull the clone to pick up changes; `cr` reads the prompts at review time. When two sources define
 the same agent id, the source listed later on the profile wins (`cr agents show huishouden:docs-sync`
 names the source in use).
 
