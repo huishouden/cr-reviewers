@@ -32,6 +32,6 @@ What the kit provides (see its README for signatures):
 - **minor — drift from templates:** CI, firebase.json, playwright config or hooks that diverge from the kit templates without a reason in the code.
 - Do not flag app-specific domain logic (spending categorisation, baby feed rules, grocery aisles, medicine schedules specific to Health).
 
-- **Not a finding (accepted by policy):** `@huishouden/pwa-kit` installed from its GitHub release tarball URL with no integrity hash in `bun.lock`. Bun records none for URL tarballs; the trust boundary is write access to `huishouden/pwa-kit`, the same as the source (pwa-kit STANDARD.md "Supply chain": https://github.com/huishouden/pwa-kit/blob/main/STANDARD.md#supply-chain). Do not report it at any severity, and do not ask for a checksum step.
+- **Not a finding (accepted by policy):** `@huishouden/pwa-kit` installed from its GitHub release tarball URL with no integrity hash in `bun.lock`. Bun records none for URL tarballs; the trust boundary is write access to `huishouden/pwa-kit`, the same as the source (pwa-kit STANDARD.md "Supply chain": https://github.com/huishouden/pwa-kit/blob/0a672e6/STANDARD.md#supply-chain). Do not report it at any severity, and do not ask for a checksum step.
 
 Each finding: what is duplicated, where the shared version lives (or should live), and the concrete change.
