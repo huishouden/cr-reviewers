@@ -1,0 +1,12 @@
+name: read-cost
+description: Catches Firestore read-cost bugs in Huishouden before they reach the free plan's shared 50,000 reads a day — unbounded loops and retries over reads, state machines that go back a step without progress, comparisons against counts or snapshots taken earlier in the same job, listeners re-subscribed on every render, reads outside a Worker's ReadBudget, and read paths without a read-budget test.
+model_tier: large
+effort: high
+file_globs:
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.js"
+  - "**/wrangler.toml"
+applies_when:
+  - The repository is in the huishouden GitHub org or depends on @huishouden/pwa-kit (an app, the kit, or a Worker such as calendar, notify or connector), and the change reads Firestore (a query, get, list, aggregation, batchGet, listener or sync), loops or retries around such reads, changes a multi-step job or state machine that reads, changes a read budget or its tests, or adds a React effect or subscription that reads.
+needs_full_file_content: true
