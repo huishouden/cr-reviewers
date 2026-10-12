@@ -8,5 +8,5 @@ file_globs:
   - "**/*.js"
   - "**/wrangler.toml"
 applies_when:
-  - The repository is in the huishouden GitHub org or depends on @huishouden/pwa-kit (an app, the kit, or a Worker such as calendar, notify or connector), and the change reads Firestore (a query, get, list, aggregation, batchGet, listener or sync), loops or retries around such reads, changes a multi-step job or state machine that reads, changes a read budget or its tests, or adds a React effect or subscription that reads.
+  - "The repository is in the huishouden GitHub org or depends on @huishouden/pwa-kit, and the change touches code that reads Firestore or schedules work that does. That includes, whatever else the diff is about (D1 tables, queues, CPU units, refactors, state machines): any src/ change in a Worker (huishouden/calendar, notify, connector — their jobs read Firestore through Person, FirestoreRest, a Firestore class or a ReadBudget even when the diff mostly shows D1); the kit's sync, watch, household, published, firestore-rest, read-budget or read-test modules; an app's data hooks, stores, effects or screens that subscribe or query; a read budget, a FIRESTORE_*_READS value or a read-budget test."
 needs_full_file_content: true

@@ -80,6 +80,13 @@ def main() -> int:
                     "an unresolvable tier aborts every review, not just this agent"
                 )
 
+            # cr reads these as lists of strings: an unquoted ": " inside one makes YAML a map,
+            # and cr then refuses every agent source at review time.
+            for key in ("file_globs", "applies_when"):
+                value = data.get(key)
+                if value is not None and (not isinstance(value, list) or not all(isinstance(v, str) for v in value)):
+                    problems.append(f"{rel}/index.yaml: '{key}' must be a list of strings (quote an item that contains ': ')")
+
             effort = data.get("effort")
             if effort is not None and effort not in ALLOWED_EFFORT:
                 problems.append(
