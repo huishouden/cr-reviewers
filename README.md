@@ -16,6 +16,7 @@ sources; these add the Huishouden lanes on top.
 | `huishouden:roles-privacy` | large | Data visible only as roles allow (admin, member, helper, kid); money and health never to helpers or kids; private flags, personal audiences, contact pay details; enforced by the rules; nothing personal to analytics |
 | `huishouden:public-data` | large | Real or inferable personal data in a public repo: fixtures, sample data, staging seeds, comments, docs, screenshots |
 | `huishouden:shared-kit` | medium | Copies of what the kit provides, and generic code two apps share that belongs in the kit |
+| `huishouden:read-cost` | large | Firestore read cost: unbounded loops and retries over reads, state machines that go back a step without progress, comparisons with counts or snapshots captured earlier in the same job, listeners re-subscribed on every render, Worker reads outside the kit's `ReadBudget`, read paths without a read-budget or interleaving test, budgets raised without a reason |
 
 Each reviewer returns no findings outside a Huishouden repository, so the source is safe to add to a
 profile that also reviews other projects.
